@@ -1,1 +1,24 @@
+<html>
+    <script type="text/javascript">
+        function generate() {
+            const stringPairs = ["EB", "BG", "GD", "DA", "AE"];
+            const modes = ["C Ionian", "D Dorian", "E Phrygian", "F Lydian", "G Mixolydian", "A Aeolian", "B Locrian"];
+            const stringResult = stringPairs[Math.floor(Math.random()*stringPairs.length)];
+            const modeResult = modes[Math.floor(Math.random()*modes.length)];
+            const result = `${stringResult[0]} and ${stringResult[1]} strings in ${modeResult}`;
+            document.getElementById("result").textContent = result;
+        }
+    </script>
 
+<head>
+    <link rel="stylesheet" href="index.css">
+  </head>
+    <body>
+        <div class="wrapper">
+        <div class="content">
+        <button onclick="generate()">Generate a warmup!</button>
+        <div id="result"></div>
+    </div>
+    </div>
+    </body>
+</html>
