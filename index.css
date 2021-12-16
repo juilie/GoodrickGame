@@ -3,6 +3,11 @@
     justify-content: center;
     align-content: center;
     background-color: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
 
 body {
@@ -22,4 +27,33 @@ body {
 button {
     padding: 10px;
     font-size: larger;
+}
+
+#result.result-present {
+    align-self: center;
+    background-color: lightgray;
+    padding: 10px;
+    border: 3px groove gray;
+    font-size: larger;
+    font-weight: bold;
+    font-size: larger;
+    transform: scale(1) rotate(0deg);
+    transition: transform .5s linear;
+}
+
+#result.result-change {
+    align-self: center;
+    background-color: lightgray;
+    padding: 10px;
+    border: 3px groove gray;
+    font-size: larger;
+    font-weight: bold;
+    font-size: larger;
+    transform: scale(0) rotate(360deg);
+    transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#result {
+
+    transform: scale(0) rotate(360deg);
 }

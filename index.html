@@ -6,7 +6,20 @@
             const stringResult = stringPairs[Math.floor(Math.random()*stringPairs.length)];
             const modeResult = modes[Math.floor(Math.random()*modes.length)];
             const result = `${stringResult[0]} and ${stringResult[1]} strings in ${modeResult}`;
-            document.getElementById("result").textContent = result;
+            const resultContainer = document.getElementById("result")
+            if(resultContainer.classList.contains("result-present")){
+                resultContainer.classList.replace("result-present","result-change")
+                setTimeout( () => {
+                    resultContainer.classList.replace("result-change","result-present"); 
+                    resultContainer.textContent = result;
+                }, 500)
+                
+            } else {
+                resultContainer.classList.add("result-present") 
+                resultContainer.textContent = result;
+            }
+           
+            
         }
     </script>
 
