@@ -2,11 +2,27 @@
     <script type="text/javascript">
         function generate() {
             const stringPairs = ["EB", "BG", "GD", "DA", "AE"];
-            const modes = ["C Ionian", "D Dorian", "E Phrygian", "F Lydian", "G Mixolydian", "A Aeolian", "B Locrian"];
+            const modes = [{scale: "C Ionian", vamp: "./Vamps/C_Ionian.png", audio: "./Audio/B_Locrian.wav"},
+                            {scale: "D Dorian", vamp: "./Vamps/D_Dorian.png", audio: "./Audio/B_Locrian.wav"}, {scale: "E Phrygian", vamp: "./Vamps/E_Phrygian.png", audio: "./Audio/B_Locrian.wav"}, 
+                            {scale: "F Lydian", vamp: "./Vamps/F_Lydian.png", audio: "./Audio/B_Locrian.wav"}, { scale: "G Mixolydian", vamp: "./Vamps/G_Mixolydian.png", audio: "./Audio/B_Locrian.wav"},
+                            { scale: "A Aeolian", vamp: "./Vamps/A_Aeolian.png", audio: "./Audio/B_Locrian.wav"}, { scale: "B Locrian", vamp: "./Vamps/B_Locrian.png", audio: "./Audio/B_Locrian.wav"}];
             const stringResult = stringPairs[Math.floor(Math.random()*stringPairs.length)];
             const modeResult = modes[Math.floor(Math.random()*modes.length)];
-            const result = `${stringResult[0]} and ${stringResult[1]} strings in ${modeResult}`;
-            const resultContainer = document.getElementById("result")
+            const result = `${stringResult[0]} and ${stringResult[1]} strings in ${modeResult.scale}`;
+            const resultContainer = document.getElementById("result");
+            var img = document.createElement('img'); 
+            img.src = modeResult.vamp;
+            
+            const imageContainer = document.getElementById("vamp");
+            imageContainer.replaceChildren(img);
+
+            sound = document.createElement('audio');
+            sound.controls = 'controls';
+            sound.src = modeResult.audio;
+            sound.type = 'audio/wav';
+            const audioContainer = document.getElementById("synth");
+            audioContainer.replaceChildren(sound);
+
             if(resultContainer.classList.contains("result-present")){
                 resultContainer.classList.replace("result-present","result-change")
                 setTimeout( () => {
@@ -28,10 +44,13 @@
   </head>
     <body>
         <div class="wrapper">
-        <div class="content">
-        <button onclick="generate()">Generate a warmup!</button>
-        <div id="result"></div>
-    </div>
-    </div>
+            <div class="vamp" id="vamp"></div>
+                <button class="button" onclick="generate()">Generate a warmup!</button>
+                <div id="result"></div>
+            <div id="synth"></div>
+        </div>
+        <div class="guitar">
+        <img src="./Images/pizzaguitar.gif" />
+        </div>
     </body>
 </html>
